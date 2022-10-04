@@ -16,14 +16,14 @@ import { getPageCount } from "../utils/pages";
 import MyPagination from "../components/UI/pagination/MyPagination";
 
 function PostsPage (){
-  const [posts, setPosts] = useState([]);
-  const [filter, setFilter] = useState({ sort: "", search: "" });
-  const [visibleModal, setVisibleModal] = useState(false);
+  const [posts, setPosts] = useState([]); // состояние неотфильтрованных постов
+  const [filter, setFilter] = useState({ sort: "", search: "" }); // по какому признаку происходит фильтр
+  const [visibleModal, setVisibleModal] = useState(false); // видимость модалки
   const sortedAndSearchPosts = usePosts(posts, filter.sort, filter.search); // хук с поиском и сортировкой
 
-  const [limit, setLimit] = useState(10);
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
+  const [limit, setLimit] = useState(10); // лимит постов на одной странице
+  const [page, setPage] = useState(1); // всего страниц
+  const [totalPages, setTotalPages] = useState(0); // всего постов
 
   const [fetchingPost, isPostLoading, error] = useFetching(async () => {
     // Хук для отображение загрузки и ошибки

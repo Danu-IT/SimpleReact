@@ -15,7 +15,6 @@ const PostPage = () => {
 
   const [fetchComments, isComLoading, comError] = useFetching(async () => {
     const response = await PostService.getCommentId(params.id);
-    console.log(response.data);
     setComments(response.data);
   });
 
